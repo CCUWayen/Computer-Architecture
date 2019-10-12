@@ -9,7 +9,7 @@ shift6: .4byte 0x0f0f0f0f
 shift7: .4byte 0xcccccccc
 shift8: .4byte 0x33333333
 shift9: .4byte 0xaaaaaaaa
-shitft10: .4byte 0x55555555
+shift10: .4byte 0x55555555
 
 .text
 main:
@@ -24,10 +24,10 @@ bitreverse:
     and t1,t1,a0
     slli t1,t1,16
     or t0,t0,t1
-    lw t1,t1,shift3
+    lw t1,shift3
     and t1,t1,t0
     srli t1,t1,8
-    lw t2,t2,shift4
+    lw t2,shift4
     and t2,t2,t0
     slli t2,t2,8
     or t0,t1,t2
