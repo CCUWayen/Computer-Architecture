@@ -1,4 +1,5 @@
 .data
+str1: .string "reversei bit is"
 example: .4byte 0x12345678
 shift1: .4byte 0xffff0000
 shift2: .4byte 0x0000ffff
@@ -15,6 +16,10 @@ shift10: .4byte 0x55555555
 main:
     lw a0,example
     jal bitreverse
+    lw a1,example
+    jal print
+    lw a0,10
+    ecall
 
 bitreverse:
     lw t0,shift1
@@ -54,3 +59,13 @@ bitreverse:
     or t0,t1,t2
     mv a0,t0
     ret
+print:
+    mv t0,a0
+    lw a0,4 
+    ecall
+    lw a1,str1
+    ecall
+    mv a1,t0
+    la a0,1
+    ecall
+    ret 
